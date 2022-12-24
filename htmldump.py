@@ -18,9 +18,11 @@ def get_title(html):
 
 
 def write(text,dst):
-    with open(dst,"x") as file:
-        file.write(text)
-
+    try:
+        with open(dst,"x") as file:
+            file.write(text)
+    except:
+        pass
 
     
 
@@ -37,6 +39,10 @@ def dump(uri,dst):
 
 if __name__ == "__main__":
     args = sys.argv
-    url = args[1]
-    dst = args[2]
-    dump(url,dst)
+    for arg in args[2:]:
+        dump(arg,args[1])
+    
+    
+    
+    
+    
